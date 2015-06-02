@@ -1,3 +1,4 @@
+require 'codeclimate-test-reporter'
 require 'simplecov'
 require 'byebug'
 require 'webmock/rspec'
@@ -8,12 +9,17 @@ module SimpleCov::Configuration
   end
 end
 
-WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!(allow_localhost: true, allow: 'codeclimate.com')
 
 SimpleCov.configure do
   clean_filters
   load_profile 'test_frameworks'
 end
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  CodeClimate::TestReporter::Formatter
+]
 
 ENV["COVERAGE"] && SimpleCov.start do
   add_filter "/.rvm/"

@@ -1,4 +1,4 @@
-AppleWarranty [![Code Climate](https://codeclimate.com/github/tmnsun/apple_warranty/badges/gpa.svg)](https://codeclimate.com/github/tmnsun/apple_warranty)
+AppleWarranty [![Code Climate](https://codeclimate.com/github/tmnsun/apple_warranty/badges/gpa.svg)](https://codeclimate.com/github/tmnsun/apple_warranty) [![Test Coverage](https://codeclimate.com/github/tmnsun/apple_warranty/badges/coverage.svg)](https://codeclimate.com/github/tmnsun/apple_warranty/coverage)
 ---
 
 apple_warranty is a Ruby library  with simple task in mind: get warranty info by Apple device serial number
