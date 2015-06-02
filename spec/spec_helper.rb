@@ -12,7 +12,6 @@ end
 WebMock.disable_net_connect!(allow_localhost: true, allow: 'codeclimate.com')
 
 SimpleCov.configure do
-  clean_filters
   load_profile 'test_frameworks'
 end
 
