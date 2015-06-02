@@ -41,8 +41,12 @@ module AppleWarranty
 
     protected
 
+    def format_imei(imei)
+      imei.upcase.gsub('O', '0')
+    end
+
     def valid?(imei)
-      (imei =~ /^[0-9]{10,15}$/) == 0
+      (format_imei(imei) =~ /^[0-9A-Z]{10,15}$/) == 0
     end
 
     def ensure_data_is_fetched
