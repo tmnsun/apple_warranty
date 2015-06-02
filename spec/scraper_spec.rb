@@ -13,17 +13,17 @@ describe AppleWarranty::Scraper do
     end
     describe '.warranty_expired?' do
       it 'fire exception' do
-        expect { @scraper.warranty_expired? }.to raise_error(AppleWarranty::DataNotFetchedException)
+        expect { @scraper.warranty_expired? }.to raise_error(AppleWarranty::Errors::DataNotFetchedError)
       end
     end
     describe '.warranty_active?' do
       it 'fire exception' do
-        expect { @scraper.warranty_active? }.to raise_error(AppleWarranty::DataNotFetchedException)
+        expect { @scraper.warranty_active? }.to raise_error(AppleWarranty::Errors::DataNotFetchedError)
       end
     end
     describe '.warranty_expired_at' do
       it 'fire exception' do
-        expect { @scraper.warranty_expired_at }.to raise_error(AppleWarranty::DataNotFetchedException)
+        expect { @scraper.warranty_expired_at }.to raise_error(AppleWarranty::Errors::DataNotFetchedError)
       end
     end
   end

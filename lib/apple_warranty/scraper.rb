@@ -1,5 +1,5 @@
-require 'open-uri'
-require 'AppleWarranty/errors'
+
+require 'apple_warranty/errors'
 
 module AppleWarranty
   # Apple Warranty Info Scraper
@@ -50,7 +50,7 @@ module AppleWarranty
     end
 
     def ensure_data_is_fetched
-      fail DataNotFetchedException unless @data_fetched
+      fail AppleWarranty::Errors::DataNotFetchedError unless @data_fetched
     end
 
     def parse(content)
