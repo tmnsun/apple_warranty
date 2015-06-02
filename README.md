@@ -1,3 +1,6 @@
+AppleWarranty [![Code Climate](https://codeclimate.com/github/tmnsun/apple_warranty/badges/gpa.svg)](https://codeclimate.com/github/tmnsun/apple_warranty)
+---
+
 apple_warranty is a Ruby library  with simple task in mind: get warranty info by Apple device serial number
 
 Installation
@@ -5,24 +8,20 @@ Installation
 
 In Bundler:
 ```ruby
-gem 'apple_warranty'
-```
-
-Otherwise:
-```bash
-[sudo|rvm] gem install apple_warranty
+gem 'apple_warranty', git: "git://github.com/tmnsun/apple_warranty.git"
 ```
 
 Usage
 ---
 
 ```ruby
-apple_warranty_scraper = AppleWarranty::Scraper.new
+warranty_scraper = AppleWarranty::Scraper.new
 
-if apple_warranty_scraper.get_data(imei) # true on success
-  apple_warranty_scraper.expired? # true/false
-  apple_warranty_scraper.expired_at # nil or expired date
-else # false if it cant fetch data from apple site
+if warranty_scraper.get_data(imei) # true on success
+  warranty_scraper.warranty_expired?  # true if expired
+  warranty_scraper.warranty_active? # false if expired
+  apple_warranty_scraper.warranty_expired_at # nil or expired date
+else # false if cant fetch data from apple site or imei validation failed
   apple_warranty_scraper.errors # errors array
 end
 ```
