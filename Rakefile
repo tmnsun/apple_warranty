@@ -11,19 +11,19 @@ rescue Bundler::BundlerError => e
 end
 require 'rake'
 
-require 'jeweler'
-Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.name = "apple_warranty"
-  gem.homepage = "http://github.com/tmnsun/apple_warranty"
-  gem.license = "MIT"
-  gem.summary = 'Get warranty info by Apple device serial number'
-  gem.description = 'Get warranty info by Apple device serial number'
-  gem.email = "tmn.sun@gmail.com"
-  gem.authors = ["Andrey Filippov"]
-  # dependencies defined in Gemfile
-end
-Jeweler::RubygemsDotOrgTasks.new
+# require 'jeweler'
+# Jeweler::Tasks.new do |gem|
+#   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
+#   gem.name = "apple_warranty"
+#   gem.homepage = "http://github.com/tmnsun/apple_warranty"
+#   gem.license = "MIT"
+#   gem.summary = 'Get warranty info by Apple device serial number'
+#   gem.description = 'Get warranty info by Apple device serial number'
+#   gem.email = "tmn.sun@gmail.com"
+#   gem.authors = ["Andrey Filippov"]
+#   # dependencies defined in Gemfile
+# end
+# Jeweler::RubygemsDotOrgTasks.new
 
 require 'rspec/core'
 require 'rspec/core/rake_task'
