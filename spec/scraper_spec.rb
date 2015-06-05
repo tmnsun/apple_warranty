@@ -116,4 +116,19 @@ describe AppleWarranty::Scraper do
     end
   end
 
+
+  context 'invalid imei' do
+    before(:each) do
+      @scraper = AppleWarranty::Scraper.new
+    end
+
+    describe '.get_data' do
+      it 'false if imei length less than 10 chars' do
+        expect(@scraper.get_data('1234567890123456')).to eq false
+      end
+      it 'false if imei length more than 15 chars' do
+        expect(@scraper.get_data('123456789')).to eq false
+      end
+    end
+  end
 end
