@@ -46,7 +46,7 @@ describe AppleWarranty::Scraper do
     end
 
     describe '.warranty_expired_at' do
-      it { expect(@scraper.warranty_expired_at).to eq Date.new(2016, 8, 10) }
+      it { expect(@scraper.warranty_expired_at).to eq Date.new(2016, 6, 15) }
     end
   end
 
@@ -71,4 +71,49 @@ describe AppleWarranty::Scraper do
       it { expect(@scraper.warranty_expired_at).to eq nil }
     end
   end
+
+  context 'blank data fetched' do
+    before(:all) do
+      stub_request(:get, /ERRRORPAGE/).to_return(body: '')
+      @scraper = AppleWarranty::Scraper.new
+      @scraper.get_data('ERRRORPAGE')
+    end
+
+    describe '.errors' do
+      it 'has 1 error' do
+        expect(@scraper.errors.length).to eq 1
+      end
+    end
+
+    describe '.warranty_expired?' do
+      it 'fire exception' do
+        expect { @scraper.warranty_expired? }.to raise_error(AppleWarranty::Errors::DataNotFetchedError)
+      end
+    end
+    describe '.warranty_active?' do
+      it 'fire exception' do
+        expect { @scraper.warranty_active? }.to raise_error(AppleWarranty::Errors::DataNotFetchedError)
+      end
+    end
+    describe '.warranty_expired_at' do
+      it 'fire exception' do
+        expect { @scraper.warranty_expired_at }.to raise_error(AppleWarranty::Errors::DataNotFetchedError)
+      end
+    end
+  end
+
+  context 'data fetch error' do
+    before(:all) do
+      stub_request(:get, /500PAGEERROR/).to_return(body: '', status: 500)
+      @scraper = AppleWarranty::Scraper.new
+      @scraper.get_data('500PAGEERROR')
+    end
+
+    describe '.errors' do
+      it 'has 1 error' do
+        expect(@scraper.errors.length).to eq 1
+      end
+    end
+  end
+
 end
