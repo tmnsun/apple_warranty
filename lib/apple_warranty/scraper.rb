@@ -14,7 +14,10 @@ module AppleWarranty
 
     # return false on error
     def get_data(imei)
-      return false unless valid?(imei)
+      unless valid?(imei)
+        @errors << 'IMEI invalid'
+        return false
+      end
       begin
         content  = open("https://selfsolve.apple.com/wcResults.do?sn=#{imei}&num=0") { |f| f.read }.split("\n")
       rescue StandardError => e
